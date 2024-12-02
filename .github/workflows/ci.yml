@@ -21,10 +21,10 @@ jobs:
       - name: Print Go Version
         run: go version
 
-    style:
-      name: Style
-      runs-on: ubuntu-latest
+  style:
+    name: Style
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Check formatting
-          run: test -z $(go fmt ./...)
+    steps:
+      - name: Check formatting
+        run: test -z $(go fmt ./...)
