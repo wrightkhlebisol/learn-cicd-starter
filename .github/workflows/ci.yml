@@ -37,8 +37,14 @@ jobs:
       - name: Install Shellcheck
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
 
-      - name: Check formatting
+      - name: Format
         run: test -z $(go fmt ./...)
 
       - name: Lint
         run: staticcheck ./...
+
+      - name: Install Gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
+      - name: Security Checks
+        run: gosec ./...
