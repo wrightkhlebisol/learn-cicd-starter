@@ -26,14 +26,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      #- name: Install Shellcheck
-      # run: go install honnef.co/go/tools/cmd/staticcheck@latest
+      - name: Install Shellcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest && echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc && source ~/.bashrc
 
       - name: Check formatting
         run: test -z $(go fmt ./...)
 
       - name: Lint
-        uses: dominikh/staticcheck-action@v1
-        with:
-          version: "latest"
-          # run: staticcheck ./...
+        run: staticcheck ./...
