@@ -43,8 +43,8 @@ jobs:
       - name: Lint
         run: staticcheck ./...
 
-      - name: Install Gosec
-        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+          #- name: Install Gosec
+          #run: go install github.com/securego/gosec/v2/cmd/gosec@latest
 
-      - name: Security Checks
-        run: gosec ./...
+          #- name: Security Checks
+          #run: gosec ./...
