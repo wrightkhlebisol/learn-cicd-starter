@@ -20,3 +20,17 @@ jobs:
 
       - name: Build Notely
         run: ./scripts/buildprod.sh
+
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentails_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: Setup Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Use gcloud CLI
+        run: gcloud info
+
+      - name: Build docker image
+        run: gcloud build submit --tag us-central1-docker.pkg.dev/boot-dev-443716-t8/notely-ar-repo/notely:latest
