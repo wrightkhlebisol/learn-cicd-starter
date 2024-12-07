@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DATABASE_URL: ${{ secrets.DATABASE__URL }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     steps:
       - id: auth
