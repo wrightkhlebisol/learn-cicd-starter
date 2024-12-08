@@ -13,11 +13,6 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     steps:
-      - id: auth
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -31,6 +26,11 @@ jobs:
 
       - name: Build Notely
         run: ./scripts/buildprod.sh
+
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Setup Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
